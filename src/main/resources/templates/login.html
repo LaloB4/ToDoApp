@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>ToDo App - login</title>
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<link rel="stylesheet" href="css/style.css"/>	
+<!--Bootstrap -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+	integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
+	crossorigin="anonymous" />
+</head>
+<body>
+	<div class="container main-container">
+		<div class="row">
+			<div class="col-md-4 offset-md-4">
+				<form action="#" th:action="@{/loginAuthentication}" method="post" th:object="${userCredentials}">
+					<div class="form-group">
+						<label for="user-name"><strong>User name</strong></label> 
+							<input
+							type="text" class="form-control" id="user-name"
+							aria-describedby="emailHelp" placeholder="Enter user name"
+							th:field="*{userName}"/>
+					</div>
+					<div class="form-group">
+						<label for="user-pass"><strong>Password</strong></label> <input
+							type="password" class="form-control" id="user-pass"
+							placeholder="Password"
+							th:field="*{password}"/>
+					</div>
+					<div th:if="${error == ''}" class="alert alert-danger" role="alert">
+  						User name or password is not correct!
+					</div>
+					<div th:if="${logout == ''}" class="alert alert-primary" role="alert">
+  						Logout Successfully!
+					</div>
+					<button type="submit" class="btn btn-outline-primary btn-block">Submit</button>
+				</form>
+			</div>
+		</div>	
+	</div>
+	<!-- Required scripts -->
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
+		integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
+		integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+		crossorigin="anonymous"></script>
+</body>
+</html>
