@@ -26,7 +26,8 @@
 				</li>
 				<li class="nav-item"><a class="nav-link"
 					href="/todoapp/mytasks">My tasks</a></li>
-				<li class="nav-item"><a class="nav-link" href="/todoapp/create">Create</a>
+				<li class="nav-item"><a class="nav-link" href="#"
+					th:href="@{/todoapp/createtask}">Create</a>
 				</li>
 				<li class="nav-item"><a class="nav-link" href="/todoapp/search">Search</a>
 				</li>
@@ -38,7 +39,7 @@
 			</a>
 		</div>
 	</nav>
-	<div class="container">
+	<div class="container main-container">
 		<h1>My Tasks</h1>
 		<hr />
 		<table class="table table-hover">

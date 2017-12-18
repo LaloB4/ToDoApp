@@ -36,5 +36,11 @@ public class ToDoAppController {
 		return mav;
 	}
 	
-	
+	@GetMapping("/createtask")
+	public ModelAndView createTask() {
+		
+		ModelAndView mav = new ModelAndView(ViewConstant.CREATETASK_VIEW);
+		return mav;
+		
+	}
 }

@@ -24,9 +24,10 @@
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item"><a class="nav-link" href="/todoapp/home">Home</a>
 				</li>
-				<li class="nav-item"><a class="nav-link"
-					href="/todoapp/mytasks">My tasks</a></li>
-				<li class="nav-item"><a class="nav-link" href="/todoapp/create">Create</a>
+				<li class="nav-item"><a class="nav-link" href="#"
+					th:href="@{/todoapp/mytasks}">My tasks</a></li>
+				<li class="nav-item"><a class="nav-link" href="#"
+					th:href="@{/todoapp/createtask}">Create</a>
 				</li>
 				<li class="nav-item"><a class="nav-link" href="/todoapp/search">Search</a>
 				</li>
@@ -38,7 +39,7 @@
 			</a>
 		</div>
 	</nav>
-	<div class="container ">
+	<div class="container main-container">
 		<h1>Home</h1>
 		<hr />
 		<p>Description about how to use the application.</p>
