@@ -57,11 +57,14 @@
 				<tr th:each="task : ${tasksList}">
 					<th th:text="${task.taskId}"></th>
 					<td th:text="${task.taskName}"></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td><a href="#"> Edit </a> <a href="#"> View details </a> <a
-						href="#"> Delete </a></td>
+					<td th:text="${task.dueDate}"></td>
+					<td th:text="${task.priority}"></td>
+					<td th:text="${task.status}"></td>
+					<td>
+						<a href="#" th:href="@{/todoapp/createtask?taskId=__${{task.taskId}}__}"> Edit </a> 
+						<a href="#"> View details </a> 
+						<a href="#" th:href="@{/todoapp/deletetask?taskId=__${{task.taskId}}__}"> Delete </a>
+					</td>
 				</tr>
 			</tbody>
 		</table>

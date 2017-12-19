@@ -40,4 +40,27 @@ public class TaskSeviceImpl implements TaskSevice{
 		return taskModelList;
 	}
 
+	@Override
+	public TaskModel createOrEditTask(TaskModel taskModel) {
+		
+		Task taskEntity = taskRepository.save(taskConverter.modelToEntity(taskModel));
+		return taskConverter.entityToModel(taskEntity);
+		
+	}
+
+	@Override
+	public int deleteTaskById(int taskId) {
+		
+		taskRepository.delete(taskId);
+		return 0;
+		
+	}
+
+	@Override
+	public TaskModel findTaskModelById(int taskId) {
+		
+		Task taskEntity =  taskRepository.findByTaskId(taskId);
+		return taskConverter.entityToModel(taskEntity);
+	}
+
 }

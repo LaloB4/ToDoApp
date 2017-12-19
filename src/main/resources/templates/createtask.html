@@ -47,32 +47,33 @@
 
 			<div class="col-md-6 offset-md-3">
 
-				<form>
+				<form action="#" th:action="@{/todoapp/newtask}" method="post" th:object="${taskModel}">
+					<input type = "hidden" th:field="*{taskId}"/>
 					<div class="form-group">
-						<label for="task-name">Task name</label> <input type="text"
+						<label for="task-name">Task name:</label> <input type="text"
 							class="form-control" id="task-name"
-							aria-describedby="taskNameHelp" placeholder="Task name" />
+							aria-describedby="taskNameHelp" placeholder="Task name" th:field="*{taskName}"/>
 					</div>
 					<div class="form-group">
-						<label for="task-description">Task description</label>
+						<label for="task-description">Task description:</label>
 						<textarea class="form-control" id="task-description"
 							aria-describedby="taskDescriptionHelp"
-							placeholder="Task description"></textarea>
+							placeholder="Task description" th:field="*{taskDescription}"></textarea>
 					</div>
 					<div class="form-group">
-						<label for="creation-date">Creation date</label> <input
+						<label for="creation-date">Creation date:</label> <input
 							type="date" class="form-control" id="creation-date"
-							aria-describedby="creaationDateHelp" placeholder="Cretion date" />
+							aria-describedby="creaationDateHelp" placeholder="Cretion date" th:field="*{creationDate}"/>
 					</div>
 					<div class="form-group">
 						<label for="due-date">Due date</label> <input type="date"
 							class="form-control" id="due-date" aria-describedby="dueDateHelp"
-							placeholder="Due date" />
+							placeholder="Due date" th:field="*{dueDate}"/>
 					</div>
 					<div class="form-group">
-						<label for="category">Category</label> <select
+						<label for="category">Category:</label> <select
 							class="form-control" id="category"
-							aria-describedby="categoryHelp">
+							aria-describedby="categoryHelp" th:field="*{category}">
 							<option selected="selected" value="">--Select an
 								option--</option>
 							<option value="Professional">Professional</option>
@@ -81,9 +82,9 @@
 						</select>
 					</div>
 					<div class="form-group">
-						<label for="priority">Priority</label> <select
+						<label for="priority">Priority:</label> <select
 							class="form-control" id="priority"
-							aria-describedby="categoryHelp">
+							aria-describedby="categoryHelp" th:field="*{priority}">
 							<option selected="selected" value="">--Select an
 								option--</option>
 							<option value="Low">Low</option>
@@ -92,8 +93,8 @@
 						</select>
 					</div>
 					<div class="form-group">
-						<label for="status">Status</label> <select class="form-control"
-							id="status" aria-describedby="categoryHelp">
+						<label for="status">Status:</label> <select class="form-control"
+							id="status" aria-describedby="categoryHelp" th:field="*{status}">
 							<option selected="selected" value="">--Select an
 								option--</option>
 							<option value="Working">Working</option>
@@ -103,13 +104,10 @@
 					</div>
 					<button type="submit" class="btn btn-outline-primary btn-block">Submit</button>
 				</form>
-
 			</div>
-
 		</div>
-
 	</div>
-
+	<br/><br/><br/><br/><br/><br/><br/><br/><br/>
 
 	<!-- Required scripts -->
 	<!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"

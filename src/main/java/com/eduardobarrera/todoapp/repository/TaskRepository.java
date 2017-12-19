@@ -10,5 +10,5 @@ import com.eduardobarrera.todoapp.entity.Task;
 @Repository("taskRepository")
 public interface TaskRepository extends JpaRepository<Task, Serializable>{
 	
-
+	public abstract Task findByTaskId(int taskId);
 }
