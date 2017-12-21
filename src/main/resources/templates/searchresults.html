@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8" />
-<title>ToDo App - My Tasks</title>
+<meta charset="UTF-8"/>
+<title>ToDo App - Search Results</title>
 <link rel="stylesheet" href="css/style.css" />
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
@@ -39,10 +39,12 @@
 			</a>
 		</div>
 	</nav>
-	<div class="container main-container">
-		<h1>My Tasks</h1>
-		<hr />
-		<table class="table table-hover">
+	<div class="container">
+		<h1>Search results:</h1>
+		<hr/>
+		<p>These are the results!</p>
+		<div class="row">
+			<table class="table table-hover">
 			<thead>
 				<tr>
 					<th scope="col">#</th>
@@ -54,22 +56,25 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr th:each="task : ${tasksList}">
+				<tr th:each="task : ${taskListSResults}">
 					<th th:text="${task.taskId}"></th>
 					<td th:text="${task.taskName}"></td>
 					<td th:text="${task.dueDate}"></td>
 					<td th:text="${task.priority}"></td>
 					<td th:text="${task.status}"></td>
 					<td>
-						<a href="#" th:href="@{/todoapp/createtask?taskId=__${{task.taskId}}__}"> Edit </a> 
-						<a href="#"> View details </a> 
+						<div th:if="${task.status != 'Finished'}">
+							<a href="#" th:href="@{/todoapp/createtask?taskId=__${{task.taskId}}__}"> Edit </a> 
+						</div>
+						<a href="#"> View details </a>
 						<a href="#" th:href="@{/todoapp/deletetask?taskId=__${{task.taskId}}__}"> Delete </a>
 					</td>
 				</tr>
 			</tbody>
 		</table>
+		</div>
 	</div>
-	<footer id="footer-component"></footer>
+	
 	<!-- Required scripts -->
 	<!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
 		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
@@ -83,8 +88,5 @@
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
 		integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
 		crossorigin="anonymous"></script>
-
-	<!--<script type="text/javascript" src="#" th:src="@{../js/init.js}"></script>-->
-
 </body>
 </html>

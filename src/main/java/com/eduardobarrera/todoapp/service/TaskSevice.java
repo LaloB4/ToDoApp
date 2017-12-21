@@ -10,5 +10,6 @@ public interface TaskSevice {
 	public abstract TaskModel createOrEditTask(TaskModel taskModel);
 	public abstract int deleteTaskById(int taskId);
 	public abstract TaskModel findTaskModelById(int taskId);
+	public abstract List<TaskModel> searchByUserCriteria(String taskName, String creationDate, String status, String category);
 	
 }

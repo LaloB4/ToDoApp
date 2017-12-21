@@ -63,4 +63,19 @@ public class TaskSeviceImpl implements TaskSevice{
 		return taskConverter.entityToModel(taskEntity);
 	}
 
+	@Override
+	public List<TaskModel> searchByUserCriteria(String taskName, String creationDate, String status, String category) {
+		
+		List<Task> taskListEntity = new ArrayList<Task>();
+		taskListEntity = taskRepository.findByTaskNameAndCreationDateAndStatusAndCategory(taskName, creationDate, status, category);
+		
+		List<TaskModel> taskListModel = new ArrayList<TaskModel>();
+		
+		for(int i = 0; i < taskListEntity.size(); i++) {
+			taskListModel.add(taskConverter.entityToModel(taskListEntity.get(i)));
+		}
+	
+		return taskListModel;
+	}
+
 }

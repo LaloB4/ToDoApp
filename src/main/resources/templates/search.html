@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>ToDo App - Search for Task</title>
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+	integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
+	crossorigin="anonymous" />
+</head>
+<body>
+	<!-- Nav var, reusable code -->
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<a class="navbar-brand" href="#">ToDo App</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarSupportedContent"
+			aria-controls="navbarSupportedContent" aria-expanded="false"
+			aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item"><a class="nav-link" href="/todoapp/home">Home</a>
+				</li>
+				<li class="nav-item"><a class="nav-link" href="#"
+					th:href="@{/todoapp/mytasks}">My tasks</a></li>
+				<li class="nav-item"><a class="nav-link" href="#"
+					th:href="@{/todoapp/createtask}">Create</a></li>
+				<li class="nav-item"><a class="nav-link" href="#"
+					th:href="@{/todoapp/search}">Search</a></li>
+				<li class="nav-item"><a class="nav-link" href="#"
+					th:href="@{/todoapp/about}">About</a></li>
+			</ul>
+			<a href="#" th:href="@{/login?logout}" class="my-2 my-lg-0">
+				<button type="button" class="btn btn-outline-primary">Logout</button>
+			</a>
+		</div>
+	</nav>
+	<div class="container">
+		<h1>Search for a task:</h1>
+		<hr />
+		<p>Provide criteria for task search</p>
+	</div>
+	<div class="container">
+		<form action="#" method="post" th:action="@{/todoapp/searchTask}" th:object="${taskModelForSearch}">
+			<div class="form-row">
+				<div class="form-group col">
+					<label for=""><strong>Task name:</strong></label>
+					<input type="text" class="form-control" placeholder="Enter task name" th:field="*{taskName}" required="required"/>
+				</div>
+				<div class="form-group col">
+					<label for=""><strong>Created date:</strong></label>
+						<input
+							type="date" class="form-control" id="creation-date"
+							aria-describedby="creaationDateHelp" th:field="*{creationDate}" required="required"/>
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="form-group col">
+					<label for=""><strong>Status:</strong></label>
+					<select class="form-control"
+							id="status" aria-describedby="categoryHelp" th:field="*{status}" required="required">
+							<option selected="selected" value="">--Select an
+								option--</option>
+							<option value="Working">Working</option>
+							<option value="On hold">On hold</option>
+							<option value="Finished">Finished</option>
+					</select>
+				</div>
+				<div class="form-group col">
+					<label for=""><strong>Category</strong></label>
+						<select
+							class="form-control" id="category"
+							aria-describedby="categoryHelp" th:field="*{category}" required="required">
+							<option selected="selected" value="">--Select an
+								option--</option>
+							<option value="Professional">Professional</option>
+							<option value="Personal">Personal</option>
+							<option value="Other">Other</option>
+						</select>
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="form-group col">
+					<button type="submit" class="btn btn-outline-primary btn-block">
+						Search
+					</button>
+				</div>
+			</div>
+		</form>
+	</div>
+
+	<!-- Required scripts -->
+	<!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+		crossorigin="anonymous"></script>-->
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
+		integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
+		integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+		crossorigin="anonymous"></script>
+</body>
+</html>

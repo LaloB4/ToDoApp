@@ -1,10 +1,15 @@
 package com.eduardobarrera.todoapp.controller;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -56,6 +61,22 @@ public class ToDoAppController {
 		return mav;
 	}
 	
+	@GetMapping("/search")
+	public String searchTask(Model model) {
+		model.addAttribute("taskModelForSearch", new TaskModel());
+		return ViewConstant.SEARCHTASK_VIEW;
+	}
+	
+	@GetMapping("/about")
+	public String aboutToDoApp() {
+		return ViewConstant.ABOUTTASK_VIEW;
+	}
+	
+	@GetMapping("/searchresults")
+	public String showSerchTaskResults() {
+		return ViewConstant.SEARCHRESULTS_VIEW;
+	}
+	
 	@PostMapping("/newtask")
 	public String createNewTask(@ModelAttribute(name = "taskModel") TaskModel taskModel) {
 		
@@ -72,5 +93,38 @@ public class ToDoAppController {
 		return "redirect:/todoapp/mytasks";
 	}
 	
-	
+	@PostMapping("/searchTask")
+	public String performSearchTask(Model model, 
+			@ModelAttribute(name = "taskModelForSearch") TaskModel taskModel) {
+		
+		LOG.info("METHOD: performSearchTask(); PARAMS: " + taskModel.toString());
+		
+		HashMap<String, String> searchFilters = new HashMap<String, String>();
+		
+		if(!(taskModel.getTaskName().equals(" ") || taskModel.getTaskName().equals(""))) {
+			searchFilters.put("taskName", taskModel.getTaskName());
+		}
+		if(!(taskModel.getCreationDate().equals(" ") || taskModel.getCreationDate().equals(""))) {
+			searchFilters.put("creationDate", taskModel.getCreationDate());
+		}
+		if(!(taskModel.getStatus().equals(" ") || taskModel.getStatus().equals(""))) {
+			searchFilters.put("status", taskModel.getStatus());
+		}
+		if(!(taskModel.getCategory().equals(" ") || taskModel.getCategory().equals(""))) {
+			searchFilters.put("category", taskModel.getCategory());
+		}
+		
+		LOG.info("These are the filters: " + searchFilters);
+		
+		if(searchFilters.size() != 4) {
+			return "redirect:/todoapp/search?criteria=false";
+		}else {
+			List<TaskModel> taskList = new ArrayList<TaskModel>();
+			taskList = taskService.searchByUserCriteria(searchFilters.get("taskName"), searchFilters.get("creationDate"), searchFilters.get("status"), searchFilters.get("category"));
+			LOG.info("The results: " + taskList);
+			model.addAttribute("taskListSResults", taskList);
+			//return "redirect:/todoapp/searchresults";
+			return ViewConstant.SEARCHRESULTS_VIEW;
+		}
+	}	
 }
