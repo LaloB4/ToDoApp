@@ -61,6 +61,13 @@ public class ToDoAppController {
 		return mav;
 	}
 	
+	@GetMapping("/viewtaskdetails")
+	public ModelAndView viewTaskDetails(@RequestParam(name="taskId") String taskId) {
+		ModelAndView mav = new ModelAndView(ViewConstant.TASKDETAILS_VIEW);
+		mav.addObject("details", taskService.findTaskModelById(Integer.parseInt(taskId)));
+		return mav;
+	}
+	
 	@GetMapping("/search")
 	public String searchTask(Model model) {
 		model.addAttribute("taskModelForSearch", new TaskModel());

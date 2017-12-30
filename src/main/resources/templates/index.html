@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8" />
 <title>ToDo App - home</title>
-<link rel="stylesheet" href="css/style.css" />
+<link href="#" rel="stylesheet" th:href="@{/css/style.css}"/>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
 	integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
 	crossorigin="anonymous" />
 </head>
-<body>
+<body class="body">
 	<!-- Nav var, reusable code -->
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 		<a class="navbar-brand" href="#">ToDo App</a>
@@ -35,14 +35,15 @@
 				</li>
 			</ul>
 			<a href="#" th:href="@{/login?logout}" class="my-2 my-lg-0">
-				<button type="button" class="btn btn-outline-primary">Logout</button>
+				<button type="button" class="btn btn-danger">Logout</button>
 			</a>
 		</div>
 	</nav>
 	<div class="container main-container">
 		<h1>Home</h1>
-		<hr />
+		<hr class="hr"/>	
 		<p>Description about how to use the application.</p>
+		
 	</div>
 	<footer id="footer-component"></footer>
 	<!-- Required scripts -->

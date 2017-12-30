@@ -3,19 +3,20 @@
 <head>
 <meta charset="UTF-8" />
 <title>ToDo App - login</title>
+<link href="#" rel="stylesheet" th:href="@{/css/style.css}"/>
 <meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-<link rel="stylesheet" href="css/style.css"/>	
+	content="width=device-width, initial-scale=1, shrink-to-fit=no" />	
 <!--Bootstrap -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
 	integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
 	crossorigin="anonymous" />
 </head>
-<body>
+<body class="body">
 	<div class="container main-container">
 		<div class="row">
-			<div class="col-md-4 offset-md-4">
+			<div class="col-md-4 offset-md-4 background-container">
+			
 				<form action="#" th:action="@{/loginAuthentication}" method="post" th:object="${userCredentials}">
 					<div class="form-group">
 						<label for="user-name"><strong>User name</strong></label> 
@@ -33,10 +34,10 @@
 					<div th:if="${error == ''}" class="alert alert-danger" role="alert">
   						User name or password is not correct!
 					</div>
-					<div th:if="${logout == ''}" class="alert alert-primary" role="alert">
+					<div th:if="${logout == ''}" class="alert alert-success" role="alert">
   						Logout Successfully!
 					</div>
-					<button type="submit" class="btn btn-outline-primary btn-block">Submit</button>
+					<button type="submit" class="btn btn-primary btn-block">Submit</button>
 				</form>
 			</div>
 		</div>	
