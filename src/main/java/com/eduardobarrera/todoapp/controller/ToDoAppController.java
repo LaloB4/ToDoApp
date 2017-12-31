@@ -38,10 +38,18 @@ public class ToDoAppController {
 	}
 	
 	@GetMapping("/mytasks")
-	public ModelAndView myTaskPage() {
-		LOG.info("METHOD: homePage(); REDIRECTING TO VIEW: " + ViewConstant.MYTASK_VIEW);
+	public ModelAndView myTaskPage(@RequestParam(name="error", required = false, defaultValue = "null") String error,
+								  @RequestParam(name="success", required = false, defaultValue = "null") String success) {
+		
+		LOG.info("METHOD: myTaskPage(); PARAMS --------: " +  error + " " + success);
+		
+		LOG.info("METHOD: myTaskPage(); REDIRECTING TO VIEW: " + ViewConstant.MYTASK_VIEW);
+		
+		
 		ModelAndView mav = new ModelAndView(ViewConstant.MYTASK_VIEW); 
 		mav.addObject("tasksList", taskService.listAllTasks());
+		mav.addObject("error", error);
+		mav.addObject("success", success);
 		return mav;
 	}
 	
@@ -88,16 +96,27 @@ public class ToDoAppController {
 	public String createNewTask(@ModelAttribute(name = "taskModel") TaskModel taskModel) {
 		
 		LOG.info("METHOD: createNewTask(); PARAMS: " + taskModel.toString());
-		taskService.createOrEditTask(taskModel);
-		return "redirect:/todoapp/mytasks";
+		String url = "redirect:/todoapp/mytasks";
+		TaskModel tModel = taskService.createOrEditTask(taskModel);
+		
+		if(tModel == null) {
 			
+			url += "?error=true";
+		}else{
+			
+			url += "?success=true";	
+		}
+		return url;
 	}
 	
 	@GetMapping("/deletetask")
 	public String deleteTask(@RequestParam(name = "taskId", required = true) int taskId) {
+		
 		LOG.info("METHOD: deleteTask(); The task id is: " +  taskId);
+		String url = "redirect:/todoapp/mytasks";
 		taskService.deleteTaskById(taskId);
-		return "redirect:/todoapp/mytasks";
+		
+		return url;
 	}
 	
 	@PostMapping("/searchTask")

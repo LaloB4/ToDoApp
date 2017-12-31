@@ -4,7 +4,8 @@
 <meta charset="UTF-8" />
 <title>ToDo App - My Tasks</title>
 <link href="#" rel="stylesheet" th:href="@{/css/style.css}" />
-<link href="#" rel="stylesheet" th:href="@{/font-awesome-4.7.0/css/font-awesome.min.css}"/>
+<link href="#" rel="stylesheet"
+	th:href="@{/font-awesome-4.7.0/css/font-awesome.min.css}" />
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
 	integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
@@ -42,7 +43,12 @@
 	<div class="container main-container">
 		<h1>My Tasks</h1>
 		<hr class="hr" />
-
+		<div th:if="${error == 'true'}" class="alert alert-danger" role="alert">
+			Task could not be created, please try again!
+		</div>
+		<div th:if="${success == 'true'}" class="alert alert-success" role="alert">
+			Task created and added successfully!
+		</div>
 		<table class="table table-dark table-hover main-container">
 			<thead>
 				<tr>
@@ -63,20 +69,23 @@
 					<td th:text="${task.status}"></td>
 					<td class="actions">
 						<div th:if="${task.status != 'Finished'}">
-							<a title="Edit" href="#" th:href="@{/todoapp/createtask?taskId=__${{task.taskId}}__}">
+							<a title="Edit" href="#"
+								th:href="@{/todoapp/createtask?taskId=__${{task.taskId}}__}">
 								<i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
-							 </a>
+							</a>
 						</div>
 						<div>
-							<a title="View details" href="#" th:href="@{/todoapp/viewtaskdetails?taskId=__${{task.taskId}}__}">
+							<a title="View details" href="#"
+								th:href="@{/todoapp/viewtaskdetails?taskId=__${{task.taskId}}__}">
 								<i class="fa fa-eye fa-2x" aria-hidden="true"></i>
 							</a>
 						</div>
 						<div>
-							<a title="Delete" href="#" th:href="@{/todoapp/deletetask?taskId=__${{task.taskId}}__}">
+							<a title="Delete" href="#"
+								th:href="@{/todoapp/deletetask?taskId=__${{task.taskId}}__}">
 								<i class="fa fa-trash fa-2x" aria-hidden="true"></i>
 							</a>
-						</div> 
+						</div>
 					</td>
 				</tr>
 			</tbody>
