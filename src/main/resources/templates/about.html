@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8"/>
+<meta charset="UTF-8" />
 <title>ToDo App - About</title>
-<link href="#" rel="stylesheet" th:href="@{/css/style.css}"/>
+<link href="#" rel="stylesheet" th:href="@{/css/style.css}" />
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
 	integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
@@ -27,27 +27,69 @@
 				<li class="nav-item"><a class="nav-link" href="#"
 					th:href="@{/todoapp/mytasks}">My tasks</a></li>
 				<li class="nav-item"><a class="nav-link" href="#"
-					th:href="@{/todoapp/createtask}">Create</a>
-				</li>
-				<li class="nav-item"><a class="nav-link" href ="#" th:href="@{/todoapp/search}">Search</a>
-				</li>
-				<li class="nav-item"><a class="nav-link" href ="#" th:href="@{/todoapp/about}">About</a>
-				</li>
+					th:href="@{/todoapp/createtask}">Create</a></li>
+				<li class="nav-item"><a class="nav-link" href="#"
+					th:href="@{/todoapp/search}">Search</a></li>
+				<li class="nav-item"><a class="nav-link" href="#"
+					th:href="@{/todoapp/about}">About</a></li>
 			</ul>
 			<a href="#" th:href="@{/login?logout}" class="my-2 my-lg-0">
 				<button type="button" class="btn btn-danger">Logout</button>
 			</a>
 		</div>
 	</nav>
-	
+
 	<div class="container main-container">
 		<h1>About ToDo Application</h1>
-		<hr class="hr"/>	
-		<p>
-			About technologies, logic, etc.
-		</p>	
+		<hr class="hr" />
+		<div class="background-container">
+			<div class="table-container">
+				<table class="table-app-details">
+					<tbody>
+						<tr>
+							<td><strong>Author:</strong></td>
+							<td>Eduardo Barrera Martínez</td>
+						</tr>
+						<tr>
+							<td><strong>Contact information:</strong></td>
+							<td>email: ing_e.barrera@outlook.com <br />
+								cellphone-number: +52 1 449 345 5215
+							</td>
+						</tr>
+						<tr>
+							<td><strong>Version:</strong></td>
+							<td>1.0</td>
+						</tr>
+						<tr>
+							<td><strong>Backend Technologies</strong></td>
+							<td>
+								<ul>
+									<li>JavaEE</li>
+									<li>Spring Boot Framework</li>
+									<li>JPA</li>
+									<li>Hibernate</li>
+								</ul>
+							</td>
+						</tr>
+						<tr>
+							<td><strong>Frontend Technologies</strong></td>
+							<td>
+								<ul>
+									<li>HTML5</li>
+									<li>CSS3</li>
+									<li>JavaScript</li>
+									<li>Bootstrap</li>
+									<li>Thymeleaf</li>
+								</ul>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		
 	</div>
-	
+
 	<!-- Required scripts -->
 	<!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
 		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"

@@ -24,3 +24,13 @@
 	float:left;
 	padding-right: 10px;
 }
+
+.table-app-details tr td{
+	border:1px solid white;
+	padding: 10px;
+	margin: 0 auto;
+}
+
+.table-container{
+	align-content: center;
+}
