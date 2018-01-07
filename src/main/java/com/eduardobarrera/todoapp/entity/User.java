@@ -1,62 +1,39 @@
 package com.eduardobarrera.todoapp.entity;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "User")
+@Table(name = "users")
 public class User {
 
 	@Id
-	@GeneratedValue
-	@Column(name="user_id", unique = true, nullable = false)
-	private Integer userId;
+	@Column(name = "username", nullable = false, unique = true, length = 45)
+	private String username;
 	
-	@Column(name="first_name")
-	private String firstName;
-	
-	@Column(name="last_name")
-	private String lastName;
-	
-	@Column(name="email")
-	private String email;
-	
-	@Column(name="password")
+	@Column(name="password", nullable = false, length = 60)
 	private String password;
+	
+	@Column(name="enabled", nullable = false)
+	private boolean enabled;
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+	private Set<UserRole> userRole = new HashSet<UserRole>();
 
-	public Integer getUserId() {
-		return userId;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setUserId(Integer userId) {
-		this.userId = userId;
-	}
-
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public String getPassword() {
@@ -67,15 +44,37 @@ public class User {
 		this.password = password;
 	}
 
-	public User(Integer userId, String firstName, String lastName, String email, String password) {
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
+
+	public Set<UserRole> getUserRole() {
+		return userRole;
+	}
+
+	public void setUserRole(Set<UserRole> userRoles) {
+		this.userRole = userRoles;
+	}
+
+	public User(String username, String password, boolean enabled) {
 		super();
-		this.userId = userId;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.email = email;
+		this.username = username;
 		this.password = password;
+		this.enabled = enabled;
+	}
+
+	public User(String username, String password, boolean enabled, Set<UserRole> userRoles) {
+		super();
+		this.username = username;
+		this.password = password;
+		this.enabled = enabled;
+		this.userRole = userRoles;
 	}
 
 	public User() {
-	}
+	};
 }

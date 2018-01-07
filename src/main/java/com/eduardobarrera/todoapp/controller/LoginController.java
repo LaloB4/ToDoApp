@@ -40,11 +40,14 @@ public class LoginController {
 	public String login(Model model,
 			@RequestParam(name="error", required=false) String error,
 			@RequestParam(name="logout", required=false) String logout) {
-		LOG.info("METHOD: login(); PARAMS: " + error + ", " + logout);
+		
 		model.addAttribute("error", error);
 		model.addAttribute("logout", logout);
 		model.addAttribute("userCredentials", new UserCredentials());
+		
+		LOG.info("METHOD: login(); PARAMS: error=> " + error + ", logout => " + logout);
 		LOG.info("METHOD: login(); REDIRECTING TO VIEW: " + ViewConstant.LOGIN_VIEW );
+		
 		return ViewConstant.LOGIN_VIEW;
 	}
 	
@@ -56,15 +59,22 @@ public class LoginController {
 	
 	@PostMapping("/loginAuthentication")
 	public String loginAuthentication(@ModelAttribute(name="userCredentials") UserCredentials userCredentials) {
+		
 		LOG.info("METHOD: /loginAuthentication(); PARAMS: " + userCredentials.toString());
 		String viewToRedirect = ""; 
+		
 		if(userCredentials.userName.equals("admin") && userCredentials.password.equals("admin")) {
+			
 			LOG.info("METHOD: /loginAuthentication(); REDIRECTING TO URL: /todoapp/home");
-			viewToRedirect = "/todoapp/home";
+			viewToRedirect += "/todoapp/home";
+			
 		}else {
+			
 			LOG.info("METHOD: /loginAuthentication(); REDIRECTING TO URL: /login?error");
-			viewToRedirect = "/login?error";	
+			viewToRedirect += "/login?error";	
+			
 		}
+		
 		return "redirect:" + viewToRedirect;
 	}
 }

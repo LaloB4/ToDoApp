@@ -49,6 +49,12 @@
 		<div th:if="${success == 'true'}" class="alert alert-success" role="alert">
 			Task created/edited successfully!
 		</div>
+		<div th:if="${deleteError == 'true'}" class="alert alert-danger" role="alert">
+			Task could not be deleted, please try again!
+		</div>
+		<div th:if="${deleteError == 'false'}" class="alert alert-success" role="alert">
+			Task deleted successfully!
+		</div>
 		<table class="table table-dark table-hover main-container">
 			<thead>
 				<tr>
@@ -81,9 +87,10 @@
 							</a>
 						</div>
 						<div>
-							<a title="Delete" 
+							<a id="deteleteTaskAction" value=""
+							   title="Delete" 
 							   href="#"
-							   onclick="javasctipt:confirmDelete();"
+							   th:onclick="'return confirm(\'Do you really want to delete this Task?\')'"
 							   th:href="@{/todoapp/deletetask?taskId=__${{task.taskId}}__}">
 								<i class="fa fa-trash fa-2x" aria-hidden="true"></i>
 							</a>
@@ -112,6 +119,8 @@
 	<!--<script type="text/javascript" src="#" th:src="@{../js/init.js}"></script>-->
 	
 	<script type="text/javascript" th:src="@{/js/script.js}"></script>
+	
+	
 	
 </body>
 </html>

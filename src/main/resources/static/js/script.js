@@ -1,4 +1,3 @@
-function confirmDelete(){
-	let confirmation = confirm("Do you really want to delete this task?");
-	$(this).value = confirmation;
+confirmDelete(){
+	return confirm("Do you really want to delete task with Id " + taskId);
 }
