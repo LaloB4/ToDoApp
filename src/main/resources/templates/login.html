@@ -17,19 +17,23 @@
 		<div class="row">
 			<div class="col-md-4 offset-md-4 background-container">
 			
-				<form action="#" th:action="@{/loginAuthentication}" method="post" th:object="${userCredentials}">
+				<form action="#" th:action="@{/loginSuccess}" method="POST">
+					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 					<div class="form-group">
 						<label for="user-name"><strong>User name</strong></label> 
 							<input
-							type="text" class="form-control" id="user-name"
+							type="text" class="form-control"
 							aria-describedby="emailHelp" placeholder="Enter user name"
-							th:field="*{userName}"/>
+							id="username"
+							name="username"/>
 					</div>
 					<div class="form-group">
-						<label for="user-pass"><strong>Password</strong></label> <input
-							type="password" class="form-control" id="user-pass"
+						<label for="user-pass"><strong>Password</strong></label> 
+							<input
+							type="password" class="form-control"
 							placeholder="Password"
-							th:field="*{password}"/>
+							id="password"
+							name="password"/>
 					</div>
 					<div th:if="${error == ''}" class="alert alert-danger" role="alert">
   						User name or password is not correct!

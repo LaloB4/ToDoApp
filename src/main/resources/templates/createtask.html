@@ -34,9 +34,9 @@
 				<li class="nav-item"><a class="nav-link" href ="#" th:href="@{/todoapp/about}">About</a>
 				</li>
 			</ul>
-			<a href="#" th:href="@{/login?logout}" class="my-2 my-lg-0">
-				<button type="button" class="btn btn-danger">Logout</button>
-			</a>
+			<form th:action="@{/logout}" class="my-2 my-lg-0" method="POST">
+				<button type="submit" class="btn btn-danger">Logout</button>
+			</form>
 		</div>
 	</nav>
 

@@ -19,18 +19,7 @@ import com.eduardobarrera.todoapp.model.UserCredentials;
 public class LoginController {
 	
 	private final Log LOG = LogFactory.getLog(LoginController.class);
-	
-	/**
-	 * Method to REDIRECT to login view
-	 * @return view string 
-	 */
-	
-	@GetMapping("/")
-	public String redirectToLogin() {
-		LOG.info("METHOD: redirectToLogin(); REDIRECTING TO URL: /login");
-		return "redirect:/login";
-	}
-	
+		
 	/**
 	 * Method to SHOW login view
 	 * @return view string 
@@ -43,7 +32,6 @@ public class LoginController {
 		
 		model.addAttribute("error", error);
 		model.addAttribute("logout", logout);
-		model.addAttribute("userCredentials", new UserCredentials());
 		
 		LOG.info("METHOD: login(); PARAMS: error=> " + error + ", logout => " + logout);
 		LOG.info("METHOD: login(); REDIRECTING TO VIEW: " + ViewConstant.LOGIN_VIEW );
@@ -57,24 +45,10 @@ public class LoginController {
 	 * @return view string 
 	 */
 	
-	@PostMapping("/loginAuthentication")
-	public String loginAuthentication(@ModelAttribute(name="userCredentials") UserCredentials userCredentials) {
+	@GetMapping({"/loginSuccess","/"})
+	public String loginAuthentication() {
 		
-		LOG.info("METHOD: /loginAuthentication(); PARAMS: " + userCredentials.toString());
-		String viewToRedirect = ""; 
-		
-		if(userCredentials.userName.equals("admin") && userCredentials.password.equals("admin")) {
-			
-			LOG.info("METHOD: /loginAuthentication(); REDIRECTING TO URL: /todoapp/home");
-			viewToRedirect += "/todoapp/home";
-			
-		}else {
-			
-			LOG.info("METHOD: /loginAuthentication(); REDIRECTING TO URL: /login?error");
-			viewToRedirect += "/login?error";	
-			
-		}
-		
-		return "redirect:" + viewToRedirect;
+		LOG.info("METHOD: /loginAuthentication(); REDIRECTING TO TasksView");	
+		return "redirect:/todoapp/home";
 	}
 }

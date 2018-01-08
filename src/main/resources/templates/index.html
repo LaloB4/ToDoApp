@@ -34,13 +34,13 @@
 				<li class="nav-item"><a class="nav-link" href ="#" th:href="@{/todoapp/about}">About</a>
 				</li>
 			</ul>
-			<a href="#" th:href="@{/login?logout}" class="my-2 my-lg-0">
-				<button type="button" class="btn btn-danger">Logout</button>
-			</a>
+			<form th:action="@{/logout}" class="my-2 my-lg-0" method="POST">
+				<button type="submit" class="btn btn-danger">Logout</button>
+			</form>
 		</div>
 	</nav>
 	<div class="container main-container">
-		<h1>Home</h1>
+		<h1>Welcome <span th:text="${username}"></span></h1>
 		<hr class="hr"/>	
 		<div class="background-container">
 			
