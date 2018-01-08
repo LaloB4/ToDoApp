@@ -40,7 +40,7 @@
 		</div>
 	</nav>
 	<div class="container main-container">
-		<h1>Welcome <span th:text="${username}"></span></h1>
+		<h1>Welcome <span th:text="${username}"></span>!</h1>
 		<hr class="hr"/>	
 		<div class="background-container">
 			
@@ -49,7 +49,7 @@
 			</p>
 			
 			<p>
-				These are the main operations supported by the Application:
+				These are the main operations and characteristics supported by the Application:
 			</p>
 			
 			<ul>
@@ -57,10 +57,32 @@
 				<li>Edit existing tasks</li>
 				<li>Delete tasks</li>
 				<li>Search for specific tasks</li>
-			</ul>	
+				<li>User authentication</li>
+				<li>Search for specific tasks</li>
+			</ul>
+			
+			<h5>Mayor release notes v2.0:</h5>
+			<ul>
+				<li>Added delete task alert confirmation</li>
+				<li>Updated/added log messages</li>
+				<li>Spring Security module integration</li>
+				<li>Retrieved user name to show it in home page</li>
+				<li>Updated frontend content</li>
+			</ul>
+			
+			<h5>Mayor release notes v1.0:</h5>
+			<ul>
+				<li>Backend logic for CRUD and Search operations in tasks</li>
+				<li>Frontend views (Login,Home, MyTasks, Create, Search, About)</li>
+				<li>Software tracking version</li>
+				<li>Error pages handling</li>
+				<li>Messages status handling</li>
+				<li>Logic for edit Tasks if not closed</li>				
+			</ul>
 						
 		</div>
 	</div>
+	<br/><br/><br/><br/>
 	<footer id="footer-component"></footer>
 	<!-- Required scripts -->
 	<!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
