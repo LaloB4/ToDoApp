@@ -5,9 +5,19 @@ import org.springframework.stereotype.Component;
 import com.eduardobarrera.todoapp.entity.Task;
 import com.eduardobarrera.todoapp.model.TaskModel;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class TaskConverter.
+ */
 @Component("taskConverter")
 public class TaskConverter {
 	
+	/**
+	 * Entity to model.
+	 *
+	 * @param taskEntity the task entity
+	 * @return the task model
+	 */
 	//Entity to Model
 	public TaskModel entityToModel(Task taskEntity) {
 		
@@ -26,6 +36,12 @@ public class TaskConverter {
 		
 	}
 	
+	/**
+	 * Model to entity.
+	 *
+	 * @param taskModel the task model
+	 * @return the task
+	 */
 	//Model to Entity
 	public Task modelToEntity(TaskModel taskModel) {
 		

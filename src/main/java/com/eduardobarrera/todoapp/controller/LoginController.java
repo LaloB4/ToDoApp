@@ -15,14 +15,23 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.eduardobarrera.todoapp.constant.ViewConstant;
 import com.eduardobarrera.todoapp.model.UserCredentials;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class LoginController.
+ */
 @Controller
 public class LoginController {
 	
+	/** The log. */
 	private final Log LOG = LogFactory.getLog(LoginController.class);
 		
 	/**
-	 * Method to SHOW login view
-	 * @return view string 
+	 * Method to SHOW login view.
+	 *
+	 * @param model the model
+	 * @param error the error
+	 * @param logout the logout
+	 * @return view string
 	 */
 	
 	@GetMapping("/login")
@@ -40,9 +49,9 @@ public class LoginController {
 	}
 	
 	/**
-	 * Method to AUTHENTICATE user
-	 * @param userCredentials
-	 * @return view string 
+	 * Method to AUTHENTICATE user.
+	 *
+	 * @return view string
 	 */
 	
 	@GetMapping({"/loginSuccess","/"})

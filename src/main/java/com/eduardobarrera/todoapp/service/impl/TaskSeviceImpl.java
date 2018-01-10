@@ -15,19 +15,29 @@ import com.eduardobarrera.todoapp.model.TaskModel;
 import com.eduardobarrera.todoapp.repository.TaskRepository;
 import com.eduardobarrera.todoapp.service.TaskSevice;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class TaskSeviceImpl.
+ */
 @Service("taskServiceImpl")
 public class TaskSeviceImpl implements TaskSevice{
 	
+	/** The logger. */
 	private final Log LOGGER = LogFactory.getLog(TaskSeviceImpl.class);
 	
+	/** The task repository. */
 	@Autowired
 	@Qualifier("taskRepository")
 	private TaskRepository taskRepository;
 	
+	/** The task converter. */
 	@Autowired
 	@Qualifier("taskConverter")
 	private TaskConverter taskConverter;
 	
+	/* (non-Javadoc)
+	 * @see com.eduardobarrera.todoapp.service.TaskSevice#listAllTasks()
+	 */
 	@Override
 	public List<TaskModel> listAllTasks() {
 		
@@ -45,6 +55,9 @@ public class TaskSeviceImpl implements TaskSevice{
 		return taskModelList;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.eduardobarrera.todoapp.service.TaskSevice#createOrEditTask(com.eduardobarrera.todoapp.model.TaskModel)
+	 */
 	@Override
 	public TaskModel createOrEditTask(TaskModel taskModel) {
 		
@@ -56,6 +69,9 @@ public class TaskSeviceImpl implements TaskSevice{
 		
 	}
 
+	/* (non-Javadoc)
+	 * @see com.eduardobarrera.todoapp.service.TaskSevice#deleteTaskById(int)
+	 */
 	@Override
 	public int deleteTaskById(int taskId) {
 		
@@ -76,6 +92,9 @@ public class TaskSeviceImpl implements TaskSevice{
 		
 	}
 
+	/* (non-Javadoc)
+	 * @see com.eduardobarrera.todoapp.service.TaskSevice#findTaskModelById(int)
+	 */
 	@Override
 	public TaskModel findTaskModelById(int taskId) {
 		
@@ -86,6 +105,9 @@ public class TaskSeviceImpl implements TaskSevice{
 		return taskModel;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.eduardobarrera.todoapp.service.TaskSevice#searchByUserCriteria(java.lang.String, java.lang.String, java.lang.String, java.lang.String)
+	 */
 	@Override
 	public List<TaskModel> searchByUserCriteria(String taskName, String creationDate, String status, String category) {
 		

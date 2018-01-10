@@ -24,16 +24,28 @@ import com.eduardobarrera.todoapp.constant.ViewConstant;
 import com.eduardobarrera.todoapp.model.TaskModel;
 import com.eduardobarrera.todoapp.service.TaskSevice;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ToDoAppController.
+ */
 @Controller
 @RequestMapping("/todoapp")
 public class ToDoAppController {
 	
+	/** The log. */
 	private final Log LOG = LogFactory.getLog(ToDoAppController.class);
 	
+	/** The task service. */
 	@Autowired
 	@Qualifier("taskServiceImpl")
 	private TaskSevice taskService;
 
+	/**
+	 * Home page.
+	 *
+	 * @param model the model
+	 * @return the string
+	 */
 	@GetMapping("/home")
 	public String homePage(Model model) {
 		LOG.info("METHOD: homePage(); REDIRECTING TO VIEW: " + ViewConstant.INDEX_VIEW);
@@ -42,6 +54,14 @@ public class ToDoAppController {
 		return ViewConstant.INDEX_VIEW;
 	}
 	
+	/**
+	 * My task page.
+	 *
+	 * @param error the error
+	 * @param success the success
+	 * @param deleteError the delete error
+	 * @return the model and view
+	 */
 	@GetMapping("/mytasks")
 	public ModelAndView myTaskPage(@RequestParam(name="error", required = false, defaultValue = "null") String error,
 								  @RequestParam(name="success", required = false, defaultValue = "null") String success,
@@ -62,6 +82,12 @@ public class ToDoAppController {
 		return mav;
 	}
 	
+	/**
+	 * Creates the task.
+	 *
+	 * @param taskId the task id
+	 * @return the model and view
+	 */
 	@GetMapping("/createtask")
 	public ModelAndView createTask(@RequestParam(name="taskId", required = false, defaultValue = "null") String taskId) {
 		
@@ -85,6 +111,12 @@ public class ToDoAppController {
 		return mav;
 	}
 	
+	/**
+	 * View task details.
+	 *
+	 * @param taskId the task id
+	 * @return the model and view
+	 */
 	@GetMapping("/viewtaskdetails")
 	public ModelAndView viewTaskDetails(@RequestParam(name="taskId") String taskId) {
 		
@@ -96,6 +128,12 @@ public class ToDoAppController {
 		
 	}
 	
+	/**
+	 * Search task.
+	 *
+	 * @param model the model
+	 * @return the string
+	 */
 	@GetMapping("/search")
 	public String searchTask(Model model) {
 		
@@ -105,6 +143,11 @@ public class ToDoAppController {
 		
 	}
 	
+	/**
+	 * About to do app.
+	 *
+	 * @return the string
+	 */
 	@PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')")
 	@GetMapping("/about")
 	public String aboutToDoApp() {
@@ -113,6 +156,11 @@ public class ToDoAppController {
 		return ViewConstant.ABOUTTASK_VIEW;
 	}
 	
+	/**
+	 * Show serch task results.
+	 *
+	 * @return the string
+	 */
 	@GetMapping("/searchresults")
 	public String showSerchTaskResults() {
 		
@@ -120,6 +168,12 @@ public class ToDoAppController {
 		return ViewConstant.SEARCHRESULTS_VIEW;
 	}
 	
+	/**
+	 * Creates the new task.
+	 *
+	 * @param taskModel the task model
+	 * @return the string
+	 */
 	@PostMapping("/newtask")
 	public String createNewTask(@ModelAttribute(name = "taskModel") TaskModel taskModel) {
 		
@@ -140,6 +194,12 @@ public class ToDoAppController {
 		return url;
 	}
 	
+	/**
+	 * Delete task.
+	 *
+	 * @param taskId the task id
+	 * @return the string
+	 */
 	@GetMapping("/deletetask")
 	public String deleteTask(@RequestParam(name = "taskId", required = true) int taskId) {
 		
@@ -158,6 +218,13 @@ public class ToDoAppController {
 		return url;
 	}
 	
+	/**
+	 * Perform search task.
+	 *
+	 * @param model the model
+	 * @param taskModel the task model
+	 * @return the string
+	 */
 	@PostMapping("/searchTask")
 	public String performSearchTask(Model model, 
 			@ModelAttribute(name = "taskModelForSearch") TaskModel taskModel) {
